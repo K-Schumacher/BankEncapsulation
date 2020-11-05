@@ -12,7 +12,7 @@ namespace BankEncapsulation
             do
             {
                 Console.WriteLine("Welcome to Broke People Bank!");
-                Console.WriteLine("Would you like to make a deposit or withdraw?");
+                Console.WriteLine("Would you like to: deposit, withdraw, or view balance?");
                 var userResponse = Console.ReadLine().ToLower();
                 Console.Clear();
 
@@ -29,9 +29,18 @@ namespace BankEncapsulation
                     var userWithdraw = double.Parse(Console.ReadLine());
                     account.Withdraw(userWithdraw);
                 }
+                if (userResponse == "view balance")
+                {
+                    Console.WriteLine($"Your balance is: {account.GetBalance()}");
+                    PressEnter();
+                }
+                if (userResponse == "balance")
+                {
+                    Console.WriteLine($"Your balance is: {account.GetBalance()}");
+                    PressEnter();
+                }
 
-                Console.WriteLine($"Your balance is: {account.GetBalance()}");
-                PressEnter();
+                Console.Clear();
 
                 Console.WriteLine("Would you like to complete another transaction?");
                 var transactionResponse = Console.ReadLine().ToLower();
@@ -47,8 +56,6 @@ namespace BankEncapsulation
                     Console.WriteLine("Thank you, have a nice day.");
                     anotherTransaction = false;
                 }
-
-
 
             } while (anotherTransaction == true);
             
